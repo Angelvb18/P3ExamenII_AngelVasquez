@@ -14,6 +14,8 @@ class Matriz : public Object
 		Matriz(char,int,int**);
 		void print();
 		char getValue();
+		int getSize(){return size;}
+		int**getMatriz(){return matriz;}
 	protected:
 		int**matriz;
 		int size;

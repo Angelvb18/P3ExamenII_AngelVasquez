@@ -19,6 +19,10 @@ Matriz::Matriz(char value,int size,vector<char> valores):Object(value){
 }
 Matriz::Matriz(char value,int size ,int**matriz2):Object(value){
 	this->size = size;
+	matriz = new int*[size];
+	for (int i = 0 ; i < size ; i++){
+		matriz[i] = new int[size];
+	}
 	for(int i = 0 ; i < size ; i++){
 		for(int j = 0 ; j < size ; j++){
 			matriz[i][j] = matriz2[i][j];
@@ -37,6 +41,5 @@ void Matriz:: print(){
 	}
 }
  char Matriz::getValue(){
- 	   print();
  	  return value;
  }
