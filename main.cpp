@@ -36,13 +36,14 @@ int main() {
 			bool valid = true;
 			int posicionLectura = 0 ;
 			while(posicionLectura < lectura.size()){
-				
+				Nodo* matrizIzq = lista->top();
+				Nodo* matrizDer= lista->top();
 				int  valid2 = 1; 
 				if(lectura[posicionLectura] == '+'){
 					
 					do{
 						
-						if( matrizIzq->getData() != lectura[posicionLectura-1]){
+						if( matrizIzq->getData() != lectura[posicionLectura-1] && matrizIzq->getData() !='R'){
 											
 							if(matrizIzq->getNext() != NULL){
 								
@@ -58,7 +59,7 @@ int main() {
 					}while(valid2 == 1 ||valid2 == 2);
 					if(valid2 == 3){
 						do{
-							if( matrizDer->getData() != lectura[posicionLectura+1]){						
+							if( matrizDer->getData() != lectura[posicionLectura+1] ){						
 								if(matrizDer->getNext() != NULL){
 									matrizDer = matrizDer->getNext();
 								}else{
@@ -74,13 +75,14 @@ int main() {
 						valid = false;
 					}
 					if(valid2 == 3){
+						lista->push(new Nodo(suma(dynamic_cast<Matriz*>(matrizIzq->getDatas()),dynamic_cast<Matriz*>(matrizDer->getDatas()))));
 					    suma(dynamic_cast<Matriz*>(matrizIzq->getDatas()),dynamic_cast<Matriz*>(matrizDer->getDatas()))->print();	
 					    posicionLectura ++;
 					}
 				}
 				if(lectura[posicionLectura] == '-'){
 					do{
-						if( matrizIzq->getData() != lectura[posicionLectura-1]){						
+						if( matrizIzq->getData() != lectura[posicionLectura-1] && matrizIzq->getData() !='R'){						
 							if(matrizIzq->getNext() != NULL){
 								matrizIzq = matrizIzq->getNext();
 							}else{
@@ -93,7 +95,7 @@ int main() {
 					}while(valid2 == 1 ||valid2 == 2);
 					if(valid2 == 3){
 						do{
-							if( matrizDer->getData() != lectura[posicionLectura+1]){						
+							if( matrizDer->getData() != lectura[posicionLectura+1] ){						
 								if(matrizDer->getNext() != NULL){
 									matrizDer = matrizDer->getNext();
 								}else{
@@ -109,6 +111,7 @@ int main() {
 						valid = false;
 					}
 					if(valid2 == 3){
+						lista->push(new Nodo(resta(dynamic_cast<Matriz*>(matrizIzq->getDatas()),dynamic_cast<Matriz*>(matrizDer->getDatas()))));
 					    resta(dynamic_cast<Matriz*>(matrizIzq->getDatas()),dynamic_cast<Matriz*>(matrizDer->getDatas()))->print();	
 					    posicionLectura ++;
 					}
